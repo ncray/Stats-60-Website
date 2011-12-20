@@ -1,0 +1,19 @@
+express = require('express')
+fs = require('fs')
+app = express.createServer()
+
+# Setup configuration
+app.use express.static(__dirname + '/public')
+app.set 'view engine', 'jade'
+
+# App Routes
+app.get '/', (request, response) ->
+  response.render 'index', { title: 'Stats 60' }
+
+app.get '/quiz', (request, response) ->
+  fs.readFile "quiz/1.json", (err, data) ->
+    response.render 'quiz', JSON.parse(data)
+
+# Listen
+app.listen 3000
+console.log "Express server listening on port %d", app.address().port

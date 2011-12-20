@@ -1,0 +1,19 @@
+script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')
+h1= title
+//p given #{data}
+p Add the following two numbers: #{data.d1} and #{data.d2}
+#form
+	//form(name="submission")
+	label Answer:
+	form(name="submission")
+		input(type="text", name="answer", id="answer", class="text-input")
+		input(type="submit", name="submit", class="button", id="submit_btn", value="GO!")
+	- var temp = 5;
+	p #{temp}
+	:coffeescript
+		$ ->
+			$(".button").click ->
+				alert $("input#answer").val()
+				console.log(temp)
+	//				console.log(#{answer})
+	p The answer is #{answer}
